@@ -92,5 +92,18 @@ function addFluffBooks() {
   addBookToLibrary("The Cryptic Cipher", "Harrison Riddlestone", 400, true);
 }
 
+
+const dialog = document.querySelector("dialog");
+const showButton = document.querySelector("dialog + button");
+const closeButton = document.querySelector("dialog button");
+
+showButton.addEventListener("click", () => {
+  dialog.showModal();
+});
+
+closeButton.addEventListener("click", () => {
+  dialog.close();
+});
+
 loadLibrary();
 displayBooks();
