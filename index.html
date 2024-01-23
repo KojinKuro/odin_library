@@ -10,9 +10,8 @@
 </head>
 <body>
   <div class="header">Books</div>
-
-  <div class="book-add">
-    <dialog>
+  <dialog>
+    <div class="dialog-grid">
       <form id="book-form">
         <label for="name">Book Name</label>
         <input type="text" name="book-name" id="name">
@@ -20,29 +19,36 @@
         <input type="text" name="book-author" id="author">
         <label for="pages">Pages</label>
         <input type="number" name="book-pages" id="pages">
-        <label for="read">Read</label>
-        <input type="checkbox" name="book-read" id="read" value="true">
-
-        <button type="submit">Submit</button>
+        <label for="status">Status</label>
+        <select name="book-status" id="status">
+          <option value="read">Read</option>
+          <option value="reading">Reading</option>
+          <option value="to-read">Want To Read</option>
+        </select>
+        <div id="book-form-buttons">
+          <button type="button" id="submit">Submit</button>
+          <button type="button"id="close">Cancel</button>
+        </div>
       </form>
-      <button id="close">Cancel</button>
-    </dialog>
-    <button>Add books</button>
-  </div>
+    </div>
+  </dialog>
+  <button>Add books</button>
 
   <div id="books-container">
     <!-- test card -->
-    <!-- <div class="book-card">
+    <div class="book-card">
       <div class="book-name">Some Test Card</div>
       <img src="./images/book.jpeg" alt="Some dynamic alt text">
-      <div class="book-page">
-        <div class="progress-box">
-          <div class="progress-bar"></div>
-        </div>
+      <div class="book-status">
+        <label for="status">Status</label>
+        <select name="book-status" id="status">
+          <option value="read">Read</option>
+          <option value="reading">Reading</option>
+          <option value="to-read">Want To Read</option>
+        </select>
       </div>
-      <button class="book-read">Read</button>
       <button class="book-remove" value="0">Remove</button>
-    </div> -->
+    </div>
   </div>
 </body>
 </html>

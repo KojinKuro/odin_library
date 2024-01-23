@@ -2,16 +2,16 @@ const myLibrary = [];
 
 class Book {
   // author, title, number of pages, whether it’s been read
-  constructor(name, author, pages, read) {
+  constructor(name, author, pages, status) {
     this.name = name;
     this.author = author;
     this.pages = pages;
-    this.read = Boolean(read);
+    this.status = status;
   }
 }
 
-function addBook(name, author, pages, read) {
-  myLibrary.push(new Book(name, author, pages, read));
+function addBook(name, author, pages, status) {
+  myLibrary.push(new Book(name, author, pages, status));
   saveLibrary();
   displayBooks();
 }
@@ -44,26 +44,42 @@ function displayBooks() {
   myLibrary.forEach((book, index) => {
     const bookCard = document.createElement("div");
     bookCard.setAttribute("class", "book-card");
+
     // add title
     const bookName = document.createElement("div");
     bookName.setAttribute("class", "book-name");
     const titleText = document.createTextNode(`${book.name} by ${book.author}`);
     bookName.appendChild(titleText);
     bookCard.appendChild(bookName);
+
     //add image
     const bookImage = document.createElement("img");
     bookImage.setAttribute("src", "./images/book.jpeg");
     bookImage.setAttribute("alt", "Some dynamic alt text");
     bookCard.appendChild(bookImage);
-    // progress bar
-    // read button
+
+    // pages
+    const bookPage = document.createElement("div");
+    bookPage.innerText = `${book.pages} Pages`;
+    bookCard.appendChild(bookPage);
+
+    // status list
+    const bookStatus = document.createElement("div");
+    bookStatus.setAttribute("class", "book-status");
+    const bookStatusLabel = document.createElement("label");
+    bookStatusLabel.innerText = 'Status';
+    bookStatus.appendChild(bookStatusLabel);
+    const bookStatusText = document.createElement("div");
+    bookStatusText.innerText = book.status;
+    bookStatus.appendChild(bookStatusText);
+    bookCard.appendChild(bookStatus);
+
     // remove button
     const bookRemove = document.createElement("button");
-    bookRemove.setAttribute("value", index);
+    bookRemove.setAttribute("data-index", index);
     bookRemove.innerText = "Remove";
-        // check this man
     bookRemove.addEventListener("click", function() {
-      removeBook(this.value);
+      removeBook(this.dataset.index);
     });
     bookCard.appendChild(bookRemove);
     // stick to the container
@@ -72,48 +88,48 @@ function displayBooks() {
 }
 
 function addFluffBooks() {
-  addBook("The Enigmatic Elixir", "Penelope Puzzleton", 352, false);
+  addBook("The Enigmatic Elixir", "Penelope Puzzleton", 352, "false");
   addBook(
     "Secrets of the Starry Night",
     "Maxwell Moonshadow",
     420,
-    true
+    "true"
   );
-  addBook("Whispers in the Wind", "Cassandra Mystique", 288, false);
+  addBook("Whispers in the Wind", "Cassandra Mystique", 288, "false");
   addBook(
     "The Curious Case of Mr. Quill",
     "Oliver Featherstone",
     304,
-    true
+    "true"
   );
-  addBook("Lost in the Labyrinth", "Amelia Riddlewood", 416, false);
+  addBook("Lost in the Labyrinth", "Amelia Riddlewood", 416, "false");
   addBook(
     "The Mysterious Memoirs of Professor Peculiar",
     "Edgar Enigma",
     368,
-    true
+    "true"
   );
   addBook(
     "Chronicles of the Cosmic Conundrum",
     "Celeste Stardust",
     512,
-    false
+    "false"
   );
-  addBook("The Puzzling Paradox", "Quentin Quizzleton", 276, true);
+  addBook("The Puzzling Paradox", "Quentin Quizzleton", 276, "true");
   addBook(
     "The Haunting of Hawthorn Manor",
     "Victoria Vanishing",
     344,
-    false
+    "false"
   );
-  addBook("The Cryptic Cipher", "Harrison Riddlestone", 400, true);
+  addBook("The Cryptic Cipher", "Harrison Riddlestone", 400, "true");
 }
 
 //code for the menu
 const dialog = document.querySelector("dialog");
 const showButton = document.querySelector("dialog + button");
-const submitButton = document.querySelector(`dialog button[type="submit"]`);
-const closeButton = document.querySelector("dialog > button#close");
+const submitButton = document.querySelector(`button#submit`);
+const closeButton = document.querySelector("button#close");
 
 showButton.addEventListener("click", () => {
   dialog.showModal();
@@ -128,15 +144,16 @@ submitButton.addEventListener("click", (event) => {
     formData.get("book-name"),
     formData.get("book-author"),
     formData.get("book-pages"),
-    formData.get("book-read")
+    formData.get("book-status")
   );
 
   dialog.close();
   event.preventDefault();
 });
 
-closeButton.addEventListener("click", () => {
+closeButton.addEventListener("click", (event) => {
   dialog.close();
+  event.preventDefault();
 });
 
 loadLibrary();
