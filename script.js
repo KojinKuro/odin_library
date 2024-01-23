@@ -92,13 +92,29 @@ function addFluffBooks() {
   addBookToLibrary("The Cryptic Cipher", "Harrison Riddlestone", 400, true);
 }
 
-
 const dialog = document.querySelector("dialog");
 const showButton = document.querySelector("dialog + button");
-const closeButton = document.querySelector("dialog button");
+const submitButton = document.querySelector(`dialog button[type="submit"]`);
+const closeButton = document.querySelector("dialog > button#close");
 
 showButton.addEventListener("click", () => {
   dialog.showModal();
+});
+
+submitButton.addEventListener("click", (event) => {
+  const form = document.getElementById("book-form");
+  const formData = new FormData(form);
+  form.reset();
+
+  addBookToLibrary(
+    formData.get("book-name"),
+    formData.get("book-author"),
+    formData.get("book-pages"),
+    formData.get("book-read")
+  );
+
+  dialog.close();
+  event.preventDefault();
 });
 
 closeButton.addEventListener("click", () => {

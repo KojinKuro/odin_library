@@ -13,8 +13,19 @@
 
   <div class="book-add">
     <dialog>
-      <button>Close</button>
-      <p>This is some text</p>
+      <form id="book-form">
+        <label for="name">Book Name</label>
+        <input type="text" name="book-name" id="name">
+        <label for="author">Author</label>
+        <input type="text" name="book-author" id="author">
+        <label for="pages">Pages</label>
+        <input type="number" name="book-pages" id="pages">
+        <label for="read">Read</label>
+        <input type="checkbox" name="book-read" id="read" value="true">
+
+        <button type="submit">Submit</button>
+      </form>
+      <button id="close">Cancel</button>
     </dialog>
     <button>Show dialog</button>
   </div>
