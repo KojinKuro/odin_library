@@ -59,6 +59,9 @@
 .book-grid .book-row :nth-child(1), .book-grid #book-grid-header :nth-child(1) {
   flex: 1;
 }
+.book-grid .book-row :nth-child(n+2), .book-grid #book-grid-header :nth-child(n+2) {
+  flex: 0 0 70px;
+}
 .book-grid #book-grid-header {
   background-color: red;
 }
@@ -67,4 +70,7 @@
 }
 .book-grid .book-row:nth-child(odd) {
   background-color: rgb(216, 216, 216);
+}
+.book-grid .book-row .book-main {
+  display: flex;
 }/*# sourceMappingURL=style.css.map */

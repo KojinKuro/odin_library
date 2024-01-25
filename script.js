@@ -68,34 +68,41 @@ function displayBooks() {
     bookName.appendChild(titleText);
     bookMain.appendChild(bookName);
     // settings
-    const bookSetting = document.createElement("button");
-    bookSetting.setAttribute("data-index", index);
-    bookSetting.innerText = "Remove";
-    bookSetting.addEventListener("click", function () {
+    const bookEdit = document.createElement("button");
+    bookEdit.setAttribute("data-index", index);
+    bookEdit.innerText = "Edit";
+    bookEdit.addEventListener("click", function () {
+      
+    });
+    bookMain.appendChild(bookEdit);
+    const bookRemove = document.createElement("button");
+    bookRemove.setAttribute("data-index", index);
+    bookRemove.innerText = "x";
+    bookRemove.addEventListener("click", function () {
       removeBook(this.dataset.index);
     });
-    bookMain.appendChild(bookSetting);
+    bookMain.appendChild(bookRemove);
     bookCard.appendChild(bookMain);
 
     // pages
     const bookPage = document.createElement("div");
     bookPage.setAttribute("class", "book-pages");
-    bookPage.innerText = `${book.pages} Pages`;
+    bookPage.innerText = `${book.pages}pg`;
     bookCard.appendChild(bookPage);
 
     // status list
     const bookStatus = document.createElement("div");
     bookStatus.setAttribute("class", "book-status");
-    const bookStatusLabel = document.createElement("label");
-    bookStatusLabel.innerText = "Status";
-    bookStatus.appendChild(bookStatusLabel);
     const bookStatusText = document.createElement("div");
     bookStatusText.innerText = book.status;
     bookStatus.appendChild(bookStatusText);
     bookCard.appendChild(bookStatus);
 
     //ratings
-
+    const bookRating = document.createElement("div");
+    bookRating.setAttribute("class", "book-rating");
+    bookRating.innerText = `10/10`;
+    bookCard.appendChild(bookRating);
     
     // stick to the container
     booksNode.appendChild(bookCard);
