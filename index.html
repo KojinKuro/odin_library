@@ -32,23 +32,40 @@
       </form>
     </div>
   </dialog>
-  <button>Add books</button>
+  <div class="book-grid">
 
-  <div id="books-container">
-    <!-- test card -->
-    <div class="book-card">
-      <div class="book-name">Some Test Card</div>
-      <img src="./images/book.jpeg" alt="Some dynamic alt text">
-      <div class="book-status">
-        <label for="status">Status</label>
-        <select name="book-status" id="status">
-          <option value="read">Read</option>
-          <option value="reading">Reading</option>
-          <option value="to-read">Want To Read</option>
-        </select>
+    <div id="book-grid-header">
+      <div class="book-main">
+        <div class="book-name">NAME</div>
+        <div class="book-settings"></div>
       </div>
-      <button class="book-remove" value="0">Remove</button>
+      <div class="book-pages">PAGES</div>
+      <div class="book-status">STATUS</div>
+      <div class="book-rating">RATING</div>
     </div>
+
+    <div id="book-grid-content">
+      <div class="book-row">
+        <div class="book-main">
+          <div class="book-name">NAME</div>
+          <div class="book-settings"></div>
+        </div>
+        <div class="book-pages">PAGES</div>
+        <div class="book-status">STATUS</div>
+        <div class="book-remove">RATING</div>
+      </div>
+      <div class="book-row">
+        <div class="book-main">
+          <div class="book-name">NAME</div>
+          <div class="book-settings"></div>
+        </div>
+        <div class="book-pages">PAGES</div>
+        <div class="book-status">STATUS</div>
+        <div class="book-remove">RATING</div>
+      </div>
+    </div>
+
+    <button class="book-add">Add books</button>
   </div>
 </body>
 </html>

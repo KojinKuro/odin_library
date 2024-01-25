@@ -8,6 +8,20 @@ class Book {
     this.pages = pages;
     this.status = status;
   }
+
+  changeStatus(val) {
+    switch(val) {
+      case 1:
+        this.status = 'read';
+        break;
+      case 2:
+        this.status = 'reading';
+        break;
+      default:
+        this.status = 'to-read';
+        break;
+    }
+  }
 }
 
 function addBook(name, author, pages, status) {
@@ -36,30 +50,36 @@ function loadLibrary() {
 }
 
 function displayBooks() {
-  const booksNode = document.querySelector("#books-container");
+  const booksNode = document.querySelector("#book-grid-content");
   while (booksNode.firstChild) {
     booksNode.removeChild(booksNode.lastChild);
   }
 
   myLibrary.forEach((book, index) => {
     const bookCard = document.createElement("div");
-    bookCard.setAttribute("class", "book-card");
+    bookCard.setAttribute("class", "book-row");
 
+    const bookMain = document.createElement("div");
+    bookMain.setAttribute("class", "book-main");
     // add title
     const bookName = document.createElement("div");
-    bookName.setAttribute("class", "book-name");
+    bookName.setAttribute("class", "book-name")
     const titleText = document.createTextNode(`${book.name} by ${book.author}`);
     bookName.appendChild(titleText);
-    bookCard.appendChild(bookName);
-
-    //add image
-    const bookImage = document.createElement("img");
-    bookImage.setAttribute("src", "./images/book.jpeg");
-    bookImage.setAttribute("alt", "Some dynamic alt text");
-    bookCard.appendChild(bookImage);
+    bookMain.appendChild(bookName);
+    // settings
+    const bookSetting = document.createElement("button");
+    bookSetting.setAttribute("data-index", index);
+    bookSetting.innerText = "Remove";
+    bookSetting.addEventListener("click", function () {
+      removeBook(this.dataset.index);
+    });
+    bookMain.appendChild(bookSetting);
+    bookCard.appendChild(bookMain);
 
     // pages
     const bookPage = document.createElement("div");
+    bookPage.setAttribute("class", "book-pages");
     bookPage.innerText = `${book.pages} Pages`;
     bookCard.appendChild(bookPage);
 
@@ -67,21 +87,16 @@ function displayBooks() {
     const bookStatus = document.createElement("div");
     bookStatus.setAttribute("class", "book-status");
     const bookStatusLabel = document.createElement("label");
-    bookStatusLabel.innerText = 'Status';
+    bookStatusLabel.innerText = "Status";
     bookStatus.appendChild(bookStatusLabel);
     const bookStatusText = document.createElement("div");
     bookStatusText.innerText = book.status;
     bookStatus.appendChild(bookStatusText);
     bookCard.appendChild(bookStatus);
 
-    // remove button
-    const bookRemove = document.createElement("button");
-    bookRemove.setAttribute("data-index", index);
-    bookRemove.innerText = "Remove";
-    bookRemove.addEventListener("click", function() {
-      removeBook(this.dataset.index);
-    });
-    bookCard.appendChild(bookRemove);
+    //ratings
+
+    
     // stick to the container
     booksNode.appendChild(bookCard);
   });
@@ -89,45 +104,20 @@ function displayBooks() {
 
 function addFluffBooks() {
   addBook("The Enigmatic Elixir", "Penelope Puzzleton", 352, "false");
-  addBook(
-    "Secrets of the Starry Night",
-    "Maxwell Moonshadow",
-    420,
-    "true"
-  );
+  addBook("Secrets of the Starry Night", "Maxwell Moonshadow", 420, "true");
   addBook("Whispers in the Wind", "Cassandra Mystique", 288, "false");
-  addBook(
-    "The Curious Case of Mr. Quill",
-    "Oliver Featherstone",
-    304,
-    "true"
-  );
+  addBook("The Curious Case of Mr. Quill", "Oliver Featherstone", 304, "true");
   addBook("Lost in the Labyrinth", "Amelia Riddlewood", 416, "false");
-  addBook(
-    "The Mysterious Memoirs of Professor Peculiar",
-    "Edgar Enigma",
-    368,
-    "true"
-  );
-  addBook(
-    "Chronicles of the Cosmic Conundrum",
-    "Celeste Stardust",
-    512,
-    "false"
-  );
+  addBook("The Mysterious Memoirs of Peculiar","Edgar Enigma", 368, "true");
+  addBook("Chronicles of the Cosmic Conundrum","Celeste Stardust",512,"false");
   addBook("The Puzzling Paradox", "Quentin Quizzleton", 276, "true");
-  addBook(
-    "The Haunting of Hawthorn Manor",
-    "Victoria Vanishing",
-    344,
-    "false"
-  );
+  addBook("The Haunting of Hawthorn Manor", "Victoria Vanishing", 344, "false");
   addBook("The Cryptic Cipher", "Harrison Riddlestone", 400, "true");
 }
 
 //code for the menu
 const dialog = document.querySelector("dialog");
-const showButton = document.querySelector("dialog + button");
+const showButton = document.querySelector("button.book-add");
 const submitButton = document.querySelector(`button#submit`);
 const closeButton = document.querySelector("button#close");
 

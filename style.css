@@ -42,4 +42,29 @@
 }
 .book-card .book-status :last-child {
   flex: auto;
+}
+
+.book-grid {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+}
+.book-grid .book-row, .book-grid #book-grid-header {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 3px 10px;
+  font-size: 1rem;
+}
+.book-grid .book-row :nth-child(1), .book-grid #book-grid-header :nth-child(1) {
+  flex: 1;
+}
+.book-grid #book-grid-header {
+  background-color: red;
+}
+.book-grid .book-row:nth-child(even) {
+  background-color: rgb(174, 174, 174);
+}
+.book-grid .book-row:nth-child(odd) {
+  background-color: rgb(216, 216, 216);
 }/*# sourceMappingURL=style.css.map */
