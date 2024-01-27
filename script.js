@@ -133,6 +133,12 @@ function displayBooks() {
     const bookEdit = document.createElement("button");
     bookEdit.innerText = "Edit";
     bookEdit.addEventListener("click", function () {
+      dialogEdit.querySelector('#name').value = myLibrary.at(index).name;
+      dialogEdit.querySelector('#author').value = myLibrary.at(index).author;
+      dialogEdit.querySelector('#pages').value = myLibrary.at(index).pages;
+      dialogEdit.querySelector('#status').value = myLibrary.at(index).status;
+      dialogEdit.querySelector('#rating').value = myLibrary.at(index).rating;
+
       dialogEdit.setAttribute("data-index", index);
       dialogEdit.showModal();
     });
