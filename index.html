@@ -10,30 +10,7 @@
 </head>
 <body>
   <div class="header">Odin Book Tracker</div>
-  <dialog>
-    <div class="dialog-grid">
-      <form id="book-form">
-        <label for="name">Book Name</label>
-        <input type="text" name="book-name" id="name">
-        <label for="author">Author</label>
-        <input type="text" name="book-author" id="author">
-        <label for="pages">Pages</label>
-        <input type="number" name="book-pages" id="pages">
-        <label for="status">Status</label>
-        <select name="book-status" id="status">
-          <option value="read">Read</option>
-          <option value="reading">Reading</option>
-          <option value="to-read">Want To Read</option>
-        </select>
-        <div id="book-form-buttons">
-          <button type="button" id="submit">Submit</button>
-          <button type="button"id="close">Cancel</button>
-        </div>
-      </form>
-    </div>
-  </dialog>
   <div class="book-grid">
-
     <div id="book-grid-header">
       <div class="book-main">
         <div class="book-name">NAME</div>
@@ -57,5 +34,78 @@
 
     <button class="book-add">Add books</button>
   </div>
+
+  <dialog id="dialog-add">
+    <div class="dialog-grid">
+      <form id="book-form-add">
+        <label for="name">Book Name</label>
+        <input type="text" name="book-name" id="name">
+        <label for="author">Author</label>
+        <input type="text" name="book-author" id="author">
+        <label for="pages">Pages</label>
+        <input type="number" name="book-pages" id="pages">
+        <label for="status">Status</label>
+        <select name="book-status" id="status">
+          <option value="read">Read</option>
+          <option value="reading">Reading</option>
+          <option value="to-read">Want To Read</option>
+        </select>
+        <label for="rating">Rating</label>
+        <select name="book-rating" id="rating">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+        <div id="book-form-buttons">
+          <button type="button" class="submit">Submit</button>
+          <button type="button"class="close">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+  <dialog id="dialog-edit">
+    <div class="dialog-grid">
+      <div>Edit Book</div>
+      <form id="book-form-edit">
+        <label for="name">Book Name</label>
+        <input type="text" name="book-name" id="name">
+        <label for="author">Author</label>
+        <input type="text" name="book-author" id="author">
+        <label for="pages">Pages</label>
+        <input type="number" name="book-pages" id="pages">
+        <label for="status">Status</label>
+        <select name="book-status" id="status">
+          <option value="read">Read</option>
+          <option value="reading">Reading</option>
+          <option value="to-read">Want To Read</option>
+        </select>
+        <label for="rating">Rating</label>
+        <select name="book-rating" id="rating">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+        <div id="book-form-buttons">
+          <button type="button" class="submit">Submit</button>
+          <button type="button"class="close">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </dialog>
 </body>
 </html>

@@ -16,34 +16,6 @@
   justify-self: end;
 }
 
-#books-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 10px;
-}
-
-.book-card {
-  display: grid;
-  grid-template-rows: auto 200px auto auto;
-  grid-template-columns: 200px;
-  background-color: grey;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  font-size: 1rem;
-}
-.book-card > img {
-  width: 100%;
-  height: 100%;
-}
-.book-card .book-status {
-  display: flex;
-  gap: 20px;
-}
-.book-card .book-status :last-child {
-  flex: auto;
-}
-
 .book-grid {
   display: flex;
   flex-direction: column;
