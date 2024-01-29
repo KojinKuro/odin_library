@@ -2,6 +2,24 @@
   font-size: 3rem;
 }
 
+html {
+  min-height: 100vh;
+  background: url("./images/background.jpeg") no-repeat center center fixed;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  background-color: red;
+  margin-bottom: 10px;
+  padding: 20px;
+  text-transform: uppercase;
+}
+
 .dialog-grid {
   display: grid;
 }
@@ -20,12 +38,13 @@
   display: flex;
   flex-direction: column;
   justify-items: center;
+  width: 1000px;
 }
 .book-grid .book-row, .book-grid #book-grid-header {
   display: flex;
   flex-direction: row;
   gap: 20px;
-  padding: 3px 10px;
+  padding: 4px 15px;
   font-size: 1rem;
 }
 .book-grid .book-row :nth-child(1), .book-grid #book-grid-header :nth-child(1) {
@@ -34,8 +53,15 @@
 .book-grid .book-row :nth-child(n+2), .book-grid #book-grid-header :nth-child(n+2) {
   flex: 0 0 70px;
 }
-.book-grid #book-grid-header {
+.book-grid #book-sort {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.book-grid #book-sort, .book-grid #book-grid-header {
   background-color: red;
+  font-size: 1.1rem;
+  text-transform: uppercase;
 }
 .book-grid .book-row:nth-child(even) {
   background-color: rgb(174, 174, 174);
@@ -45,4 +71,13 @@
 }
 .book-grid .book-row .book-main {
   display: flex;
+}
+.book-grid .book-row button {
+  max-width: 50px;
+}
+.book-grid .book-row button:nth-child(3) {
+  max-width: 30px;
+}
+.book-grid button.book-add {
+  margin-top: 10px;
 }/*# sourceMappingURL=style.css.map */

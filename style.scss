@@ -2,6 +2,25 @@
   font-size: 3rem;
 }
 
+html {
+  min-height: 100vh;
+  background: url("./images/background.jpeg") no-repeat center center fixed;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  background-color: red;
+  margin-bottom: 10px;
+  padding: 20px;
+
+  text-transform: uppercase;
+}
+
 .dialog-grid {
   display: grid;
   form {
@@ -22,12 +41,14 @@
   flex-direction: column;
   justify-items: center;
 
+  width: 1000px;
+
   .book-row, #book-grid-header {
     display: flex;
     flex-direction: row;
     
     gap: 20px;
-    padding: 3px 10px;
+    padding: 4px 15px;
 
     font-size: 1rem;
 
@@ -39,8 +60,16 @@
     }
   }
 
-  #book-grid-header {
+  #book-sort {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  #book-sort, #book-grid-header {
     background-color: red;
+    font-size: 1.1rem;
+    text-transform: uppercase;
   }
 
   .book-row {
@@ -49,5 +78,16 @@
     .book-main {
       display: flex;
     }
+
+    button {
+      max-width: 50px;
+      &:nth-child(3) {
+        max-width: 30px;
+      }
+    }
+  }
+
+  button.book-add {
+    margin-top: 10px;
   }
 }
